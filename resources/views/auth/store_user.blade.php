@@ -3,12 +3,20 @@
 @section('content')
     @include('layouts.nav_bar')
 
-    <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
-        <div class="card p-5 bg-dark text-white" style="width: 530px;">
-            <h2 class="text-center mb-4">Login</h2>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 110vh;">
+        <div class="card p-4 bg-dark text-white" style="width: 650px;">
+            <h2 class="text-center mb-4">Criar uma conta</h2>
 
             <form action="{{ route('authenticate') }}" method="POST" novalidate>
                 @csrf
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                    @error('username')
+                        <p class="text text-danger text-center">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required>
@@ -27,7 +35,22 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Confirme a Senha</label>
+                    <input type="password" name="password_confirmation" id="password" class="form-control" required>
+                    @error('password')
+                        <div class="text text-danger text-center">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Imagem de Perfil</label>
+                    <input type="file" name="image" id="image" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
             </form>
 
             <div class="text text-center text-danger mt-3">

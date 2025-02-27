@@ -20,16 +20,16 @@
             </ul>
             <form class="d-flex">
                 @csrf
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light me-3" type="submit">Pesquisar</button>
+                <input class="form-control me-2" type="search" placeholder="Pesquisar..." aria-label="Search">
+                <button class="btn btn-outline-light me-3" type="submit">Procurar</button>
             </form>
 
             @auth
-            <a href="#" class="text-white ms-3 nav-link">Minha Conta</a>
-            <a href="#" class="text-white ms-3 nav-link">Sair</a>
+                <a href="#" class="text-white ms-3 nav-link">Minha Conta</a>
+                <a href="{{ route('logout') }}" class="text-white ms-3 nav-link">Sair</a>
             @else
-            <a href="#" class="text-white ms-3 nav-link">Login</a>
-            <a href="#" class="text-white ms-3 nav-link">Cadastrar</a>
+                <a href="{{ route('login') }}" class="text-white ms-3 nav-link">Login</a>
+                <a href="{{route('register')}}" class="text-white ms-3 nav-link">Cadastrar</a>
 
             @endauth
 

@@ -11,7 +11,7 @@ class MainController extends Controller
 {
     public function home()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(6);
         return view('home', ['posts' => $posts]);
     }
 }
